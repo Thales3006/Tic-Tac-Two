@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Jogo da Velha 2</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <div id="game">
+            <h1 id="title">Jogo da Velha 2</h1>
+
+            <table id="tableOuter" class="outer">
+            </table>
+
+            <button id="restart">Restart</button>
+        </div>
+
+        <div id="chat">
+            <ul id="messages"></ul>
+            <form id="form" action="">
+                <input id="input" autocomplete="off" /><button>Enviar</button>
+            </form>
+        </div>
+
+        <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+        <script src="cli.js"></script>
+    </body>
+  
+</html>
