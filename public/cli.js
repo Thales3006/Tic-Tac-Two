@@ -20,7 +20,14 @@ socket.on('chat message', (message) => {
     window.scrollTo(0, document.body.scrollHeight)
 })
 
-socket.on('update cells', (newMat) => {
+socket.on('update cells', (newInfo) => {
+    let current = newInfo.current
+    let newMat = newInfo.gameMatrix
+
+    let text = document.getElementById("turnTitle")
+    text.innerHTML = `Vez de: ${newInfo.turn ? "X" : "O"}`
+    text.style.color = newInfo.turn ? "#AA2200" : "#0022AA"
+    
     const innerCells = Array.from(document.querySelectorAll("td.inner"))
     innerCells.forEach((cell, index) => {
         j = index % 3
@@ -32,8 +39,19 @@ socket.on('update cells', (newMat) => {
         
         if(cellValue === 1)
             cell.innerHTML = '<b>X</b>'
+        else if(cellValue === 2)
+            cell.innerHTML = '<b>O</b>'
         else if(cellValue === 0)
             cell.innerHTML = '<b></b>'
+
+        if(current.row === undefined || w === current.row && k === current.column){
+                cell.style.backgroundColor = "#FFFFFF"
+                cell.style.border = "5px solid #705c5c"
+
+        } else {
+                cell.style.backgroundColor = "#BBBBBB"
+                cell.style.border = "5px solid #604c4c"
+        }
 
     })
 })
